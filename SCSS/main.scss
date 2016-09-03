@@ -1,3 +1,19 @@
+$alabaster: #fbfbfb;
+$yellow-orange: #fbb03f;
+$apple: #38bb3c;
+$apple-transparent: rgba($apple, .5);
+$satin-linen: #E5E4D7;
+$cerulean: #089de3;
+$cerulean-transparent: rgba(#089de3, .3);
+$mine-shaft: #333;
+$gallery: #EBEBEB;
+$mishka: #D0D0DA;
+
+/*            Resets           */
+body {
+  background-color: $alabaster;
+}
+
 @media screen and (min-width: 1200px) {
   .main-content {
     max-width: 1200px;
@@ -8,4 +24,117 @@
 table {
   max-width: 100%;
   width: 100%;
+}
+
+thead {
+  background-color: $mine-shaft;
+  color: white;
+
+}
+
+tbody {
+  tr {
+    &:not(:last-child) {
+      border-bottom: 1px solid $mishka;
+    }
+    &:nth-child(even) {
+      background-color: $mishka;
+      td:not(:last-child) {
+        border-right: 1px solid white;
+      }
+    }
+    &:nth-child(odd) {
+      td:not(:last-child) {
+        border-right: 1px solid $mishka;
+      }
+    }
+  }
+}
+
+th {
+  padding: 9px 10px;
+  &:not(:last-child) {
+    border-right: 1px solid white;
+  }
+}
+
+td {
+  padding: 3px 10px;
+  text-transform: capitalize;
+}
+
+/*         Components          */
+
+header,
+.navbar-inverse {
+  border: none;
+  background-color: $apple;
+  color: white;
+}
+
+.navbar-nav>li>a,
+.navbar-brand {
+  color: white !important;
+}
+
+/*          Loader            */
+.loader-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: white;
+  opacity: 1;
+  transition: .5s opacity ease;
+
+  .loader {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+  .bounce {
+    border-radius: 50%;
+    position: absolute;;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $apple-transparent;
+    animation: bounce .75s ease infinite;
+    -webkit-animation: bounce .75s ease infinite;
+  }
+  &.loaded {
+      opacity: 0;
+  }
+}
+
+/*          Animations          */
+@-webkit-keyframes bounce {
+    0%, 100% {
+        transform: scale(0);
+        -webkit-transform: scale(0)
+    }
+
+    50% {
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(0);
+        -webkit-transform: scale(0.5)
+    }
+
+    50% {
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
 }
