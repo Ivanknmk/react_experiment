@@ -75,10 +75,10 @@ tbody {
     }
     &:last-child {
       td:first-child {
-        border-bottom-left-radius: $border;
+        border-bottom-left-radius: 8px;
       }
       td:last-child {
-        border-top-right-radius: $border;
+        border-bottom-right-radius: 8px;
       }
     }
   }
@@ -108,6 +108,38 @@ header,
 .navbar-nav>li>a,
 .navbar-brand {
   color: white !important;
+}
+
+.ingredients {
+  border-top-left-radius: $border;
+  border-top-right-radius: $border;
+  margin-bottom: 0;
+  li {
+    padding: 10px;
+    box-sizing: border-box;
+    transition: .5s background ease, .5s color ease, .5s border ease;
+    cursor: pointer;
+    text-align: center;
+    &:first-child {
+      border-top-left-radius: $border;
+    }
+    &:last-child {
+      border-top-right-radius: $border;
+    }
+    &.active {
+      border: 1px solid $apple;
+      background-color: $apple;
+      color: white;
+    }
+    &:not(.active) {
+      border: 1px solid $mishka;
+    }
+    &:hover:not(.active) {
+      border-color: darken($apple, 10%);
+      background-color: darken($apple, 10%);
+      color: white;
+    }
+  }
 }
 
 /*          Loader            */
