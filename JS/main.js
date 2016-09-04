@@ -9,7 +9,7 @@ const navbarInstance = (
   <Navbar inverse>
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="/">Nutriologist</a>
+        <a href="/"> <img className="img-responsive" src="http://placehold.it/50x50"/> <span>Nutriologist</span></a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>

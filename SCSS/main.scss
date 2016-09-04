@@ -1,6 +1,6 @@
 $alabaster: #fbfbfb;
 $yellow-orange: #fbb03f;
-$apple: #38bb3c;
+$apple: #38B96E;
 $apple-transparent: rgba($apple, .5);
 $satin-linen: #E5E4D7;
 $cerulean: #089de3;
@@ -8,11 +8,25 @@ $cerulean-transparent: rgba(#089de3, .3);
 $mine-shaft: #333;
 $gallery: #EBEBEB;
 $mishka: #D0D0DA;
+$mist: #90AFC5;
+$overcast: #F1F1F1;
+
+/*borders*/
+$border: 5px;
 
 /*            Resets           */
 body {
   background-color: $alabaster;
 }
+
+.navbar-brand {
+  height: auto;
+  img {
+    border-radius: 50%;
+  }
+}
+
+/*Common Code*/
 
 @media screen and (min-width: 1200px) {
   .main-content {
@@ -27,20 +41,22 @@ table {
 }
 
 thead {
-  background-color: $mine-shaft;
+  background-color: $mist;
   color: white;
-
+  th:first-child {
+    border-top-left-radius: $border;
+  }
+  th:last-child {
+    border-top-right-radius: $border;
+  }
 }
 
 tbody {
   tr {
-    &:not(:last-child) {
-      border-bottom: 1px solid $mishka;
-    }
     &:nth-child(even) {
-      background-color: $mishka;
+      background-color: $overcast;
       td:not(:last-child) {
-        border-right: 1px solid white;
+        border-right: 1px solid $mishka;
       }
     }
     &:nth-child(odd) {
@@ -59,7 +75,7 @@ th {
 }
 
 td {
-  padding: 3px 10px;
+  padding: 5px 10px;
   text-transform: capitalize;
 }
 

@@ -2,21 +2,75 @@
 	"name": "Carnicero",
 	"total": [{
 		"name": "carne roja",
-		"quantity": 1.3
+		"quantity": "1.3"
 	}, {
 		"name": "carne blanca",
-		"quantity": 13
+		"quantity": "13"
 	}]
 }, {
+	"name": "Pescado",
+	"total": [{
+			"name": "bacalao",
+			"quantity": "2"
+		}, {
+			"name": "atún",
+			"quantity": "1"
+		}, {
+			"name": "calamar",
+			"quantity": "1.2"
+		}]
+	},{
 	"name": "Fruta/Verdura",
 	"total": [{
 		"name": "papa",
-		"quantity": 2.3
+		"quantity": "2.3"
 	}, {
 		"name": "coliflor",
-		"quantity": 3.5
+		"quantity": "3.5"
 	}, {
 		"name": "zanahoria",
-		"quantity": 3
+		"quantity": "3"
+	}, {
+		"name": "arándano",
+		"quantity": ".3"
+	}, {
+		"name": "arándano",
+		"quantity": ".3"
+	}, {
+		"name": "aguacate",
+		"quantity": ".4"
+	}, {
+		"name": "arándano",
+		"quantity": ".3"
+	}, {
+		"name": "manzana",
+		"quantity": ".3"
+	}, {
+		"name": "brócoli",
+		"quantity": ".8"
+	}, {
+		"name": "tomate",
+		"quantity": "1"
+	}]
+}, {
+	"name": "Despensa",
+	"total": [{
+		"name": "pimienta",
+		"quantity": ".8"
+	}, {
+		"name": "sal",
+		"quantity": "1.3"
+	}, {
+		"name": "brócoli",
+		"quantity": ".8"
+	}, {
+		"name": "jenjibre",
+		"quantity": ".3"
+	}, {
+		"name": "canela",
+		"quantity": ".2"
+	}, {
+		"name": "menta",
+		"quantity": ".2"
 	}]
 }]

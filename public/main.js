@@ -29,7 +29,14 @@ var navbarInstance = _react2.default.createElement(
       _react2.default.createElement(
         'a',
         { href: '/' },
-        'Nutriologist'
+        ' ',
+        _react2.default.createElement('img', { className: 'img-responsive', src: 'http://placehold.it/50x50' }),
+        ' ',
+        _react2.default.createElement(
+          'span',
+          null,
+          'Nutriologist'
+        )
       )
     ),
     _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
