@@ -43,8 +43,6 @@ import axios from 'axios';
            <div className="container-fluid">
              {
                elements.map(function (item, index) {
-
-                 console.log(this);
                  return (
                          <div className="row" key={index}>
                            <div className="col-xs-12 col-md-8 col-md-offset-2">

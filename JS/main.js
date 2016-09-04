@@ -4,19 +4,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {navbarInstance} from './header';
 import Table from './table_component.js';
+import {Manager} from './recipes.js';
 
 ReactDOM.render(navbarInstance, document.getElementById('header'));
 
-
 {
-  let totalTable = document.getElementById('totales');
+  let totalTable    = document.getElementById('totales'),
+      recipeManager = document.getElementById('recipes-manager');
 
-  if (!!totalTable)
+  if (!!totalTable) {
     ReactDOM.render(<Table/>, totalTable);
+  }
+
+  if (!!recipeManager) {
+      ReactDOM.render(<Manager/>, recipeManager);
+  }
 }
 
 /* General */
-(function () {
+(function (window, document) {
   let loader = document.getElementById('loader');
 
   loader.className += ' loaded';
@@ -24,4 +30,4 @@ ReactDOM.render(navbarInstance, document.getElementById('header'));
   setTimeout(function () {
     loader.remove();
   }, 500);
-})();
+})(window, document);
