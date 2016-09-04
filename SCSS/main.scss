@@ -19,6 +19,11 @@ body {
   background-color: $alabaster;
 }
 
+main {
+  display: block;
+  margin-bottom: 30px;
+}
+
 .navbar-brand {
   height: auto;
   img {
@@ -31,13 +36,17 @@ body {
 @media screen and (min-width: 1200px) {
   .main-content {
     max-width: 1200px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 table {
   max-width: 100%;
   width: 100%;
+  border: 1px solid $mist;
+  border-radius: 8px;
+  border-collapse: separate;
 }
 
 thead {
@@ -62,6 +71,14 @@ tbody {
     &:nth-child(odd) {
       td:not(:last-child) {
         border-right: 1px solid $mishka;
+      }
+    }
+    &:last-child {
+      td:first-child {
+        border-bottom-left-radius: $border;
+      }
+      td:last-child {
+        border-top-right-radius: $border;
       }
     }
   }

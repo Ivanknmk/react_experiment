@@ -3,6 +3,10 @@
 body {
   background-color: #fbfbfb; }
 
+main {
+  display: block;
+  margin-bottom: 30px; }
+
 .navbar-brand {
   height: auto; }
   .navbar-brand img {
@@ -12,11 +16,15 @@ body {
 @media screen and (min-width: 1200px) {
   .main-content {
     max-width: 1200px;
-    margin: auto; } }
+    margin-left: auto;
+    margin-right: auto; } }
 
 table {
   max-width: 100%;
-  width: 100%; }
+  width: 100%;
+  border: 1px solid #90AFC5;
+  border-radius: 8px;
+  border-collapse: separate; }
 
 thead {
   background-color: #90AFC5;
@@ -33,6 +41,12 @@ tbody tr:nth-child(even) {
 
 tbody tr:nth-child(odd) td:not(:last-child) {
   border-right: 1px solid #D0D0DA; }
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 5px; }
+
+tbody tr:last-child td:last-child {
+  border-top-right-radius: 5px; }
 
 th {
   padding: 9px 10px; }
