@@ -1,0 +1,255 @@
+$alabaster: #fbfbfb;
+$yellow-orange: #fbb03f;
+$apple: #38B96E;
+$apple-transparent: rgba($apple, .5);
+$satin-linen: #E5E4D7;
+$cerulean: #089de3;
+$cerulean-transparent: rgba(#089de3, .3);
+$mine-shaft: #333;
+$gallery: #EBEBEB;
+$mishka: #D0D0DA;
+$mist: #90AFC5;
+$overcast: #F1F1F1;
+$astral: #337ab7;
+$roman: #d9534f;
+
+/*borders*/
+$border: 5px;
+
+/*            Resets           */
+body {
+  background-color: $alabaster;
+}
+
+main {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.navbar-brand {
+  height: auto;
+  img {
+    border-radius: 50%;
+  }
+}
+
+/*Common Code*/
+
+@media screen and (min-width: 1200px) {
+  .main-content {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+table {
+  max-width: 100%;
+  width: 100%;
+  border: 1px solid $mist;
+  border-radius: 8px;
+  border-collapse: separate;
+}
+
+thead {
+  background-color: $mist;
+  color: white;
+  th:first-child {
+    border-top-left-radius: $border;
+  }
+  th:last-child {
+    border-top-right-radius: $border;
+  }
+}
+
+tbody {
+  tr {
+    &:nth-child(even) {
+      background-color: $overcast;
+      td:not(:last-child) {
+        border-right: 1px solid $mishka;
+      }
+    }
+    &:nth-child(odd) {
+      td:not(:last-child) {
+        border-right: 1px solid $mishka;
+      }
+    }
+    &:last-child {
+      td:first-child {
+        border-bottom-left-radius: 8px;
+      }
+      td:last-child {
+        border-bottom-right-radius: 8px;
+      }
+    }
+  }
+}
+
+th {
+  padding: 9px 10px;
+  &:not(:last-child) {
+    border-right: 1px solid white;
+  }
+}
+
+td {
+  padding: 5px 10px;
+  text-transform: capitalize;
+}
+
+/*         Components          */
+
+header,
+.navbar-inverse {
+  border: none;
+  background-color: $apple;
+  color: white;
+}
+
+.navbar-nav>li>a,
+.navbar-brand {
+  color: white !important;
+}
+
+.ingredients {
+  border-top-left-radius: $border;
+  border-top-right-radius: $border;
+  margin-bottom: 0;
+  li {
+    padding: 10px;
+    box-sizing: border-box;
+    transition: .5s background ease, .5s color ease, .5s border ease;
+    cursor: pointer;
+    text-align: center;
+    &:first-child {
+      border-top-left-radius: $border;
+    }
+    &:last-child {
+      border-top-right-radius: $border;
+    }
+    &.active {
+      border: 1px solid $apple;
+      background-color: $apple;
+      color: white;
+    }
+    &:not(.active) {
+      border: 1px solid $mishka;
+    }
+    &:hover:not(.active) {
+      border-color: darken($apple, 10%);
+      background-color: darken($apple, 10%);
+      color: white;
+    }
+  }
+}
+
+.ingredients-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-left: 1px solid $mishka;
+  border-right: 1px solid $mishka;
+  border-bottom: 1px solid $mishka;
+  border-bottom-left-radius: $border;
+  border-bottom-right-radius: $border;
+
+  .label {
+    margin-right: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .5s background ease;
+    &.label-primary:hover {
+      background-color: darken($astral, 10%);
+    }
+  }
+  span {
+    font-size: 10px;
+  }
+}
+.ingredient-list {
+  label {
+    text-transform: capitalize;
+  }
+  span {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: lighter;
+    height: 22px;
+    vertical-align: top;
+    line-height: 17.5px;
+    transition: .5s background ease;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($roman, 10%);
+    }
+  }
+  label, input, span {
+    width: 32%;
+  }
+  span {
+    margin-left: 2%;
+    width: 30%;    
+  }
+}
+
+/*          Loader            */
+.loader-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: white;
+  opacity: 1;
+  transition: .5s opacity ease;
+
+  .loader {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+  .bounce {
+    border-radius: 50%;
+    position: absolute;;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $apple-transparent;
+    animation: bounce .75s ease infinite;
+    -webkit-animation: bounce .75s ease infinite;
+  }
+  &.loaded {
+      opacity: 0;
+  }
+}
+
+/*          Animations          */
+@-webkit-keyframes bounce {
+    0%, 100% {
+        transform: scale(0);
+        -webkit-transform: scale(0)
+    }
+
+    50% {
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(0);
+        -webkit-transform: scale(0.5)
+    }
+
+    50% {
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
+}
