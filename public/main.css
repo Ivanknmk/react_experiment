@@ -93,6 +93,46 @@ header,
       background-color: #2c9257;
       color: white; }
 
+.ingredients-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-left: 1px solid #D0D0DA;
+  border-right: 1px solid #D0D0DA;
+  border-bottom: 1px solid #D0D0DA;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px; }
+  .ingredients-container .label {
+    margin-right: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .5s background ease; }
+    .ingredients-container .label.label-primary:hover {
+      background-color: #285f8f; }
+  .ingredients-container span {
+    font-size: 10px; }
+
+.ingredient-list label {
+  text-transform: capitalize; }
+
+.ingredient-list span {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: lighter;
+  height: 22px;
+  vertical-align: top;
+  line-height: 17.5px;
+  transition: .5s background ease;
+  cursor: pointer; }
+  .ingredient-list span:hover {
+    background-color: #c9302c; }
+
+.ingredient-list label, .ingredient-list input, .ingredient-list span {
+  width: 32%; }
+
+.ingredient-list span {
+  margin-left: 2%;
+  width: 30%; }
+
 /*          Loader            */
 .loader-container {
   position: absolute;

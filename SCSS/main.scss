@@ -10,6 +10,8 @@ $gallery: #EBEBEB;
 $mishka: #D0D0DA;
 $mist: #90AFC5;
 $overcast: #F1F1F1;
+$astral: #337ab7;
+$roman: #d9534f;
 
 /*borders*/
 $border: 5px;
@@ -139,6 +141,54 @@ header,
       background-color: darken($apple, 10%);
       color: white;
     }
+  }
+}
+
+.ingredients-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-left: 1px solid $mishka;
+  border-right: 1px solid $mishka;
+  border-bottom: 1px solid $mishka;
+  border-bottom-left-radius: $border;
+  border-bottom-right-radius: $border;
+
+  .label {
+    margin-right: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .5s background ease;
+    &.label-primary:hover {
+      background-color: darken($astral, 10%);
+    }
+  }
+  span {
+    font-size: 10px;
+  }
+}
+.ingredient-list {
+  label {
+    text-transform: capitalize;
+  }
+  span {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: lighter;
+    height: 22px;
+    vertical-align: top;
+    line-height: 17.5px;
+    transition: .5s background ease;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($roman, 10%);
+    }
+  }
+  label, input, span {
+    width: 32%;
+  }
+  span {
+    margin-left: 2%;
+    width: 30%;    
   }
 }
 

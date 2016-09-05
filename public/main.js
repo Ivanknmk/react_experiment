@@ -40,52 +40,13 @@ module.exports = {
         null,
         _react2.default.createElement(
           _reactBootstrap.NavItem,
+          { eventKey: 2, href: '/manage_recipes.html' },
+          'Administrar recetas'
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.NavItem,
           { eventKey: 1, href: 'recipes.html' },
           'Recetas'
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.NavItem,
-          { eventKey: 2, href: '#' },
-          'Link'
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.NavDropdown,
-          { eventKey: 3, title: 'Dropdown', id: 'basic-nav-dropdown' },
-          _react2.default.createElement(
-            _reactBootstrap.MenuItem,
-            { eventKey: 3.1 },
-            'Action'
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.MenuItem,
-            { eventKey: 3.2 },
-            'Another action'
-          ),
-          _react2.default.createElement(
-            _reactBootstrap.MenuItem,
-            { eventKey: 3.3 },
-            'Something else here'
-          ),
-          _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-          _react2.default.createElement(
-            _reactBootstrap.MenuItem,
-            { eventKey: 3.3 },
-            'Separated link'
-          )
-        )
-      ),
-      _react2.default.createElement(
-        _reactBootstrap.Nav,
-        { pullRight: true },
-        _react2.default.createElement(
-          _reactBootstrap.NavItem,
-          { eventKey: 1, href: '#' },
-          'Link Right'
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.NavItem,
-          { eventKey: 2, href: '#' },
-          'Link Right'
         )
       )
     )
@@ -153,7 +114,8 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ingredients = null,
-    ingredientList = null;
+    ingredientList = null,
+    recipe = null;
 
 ingredients = [{
   "name": "carne",
@@ -174,7 +136,7 @@ ingredients = [{
 
 ingredientList = [{
   "name": "carne",
-  "list": ["carne roja", "carne blanca"]
+  "list": ["carne de puerco", "carne de pollo"]
 }, {
   "name": "vegetales",
   "list": ["papa", "coliflor", "zanahoria", "arandano", "aguacate", "manzana", "brócoli"]
@@ -186,15 +148,34 @@ ingredientList = [{
   "list": ["pimienta", "sal", "jenjibre", "canela", "menta"]
 }];
 
+recipe = {
+  name: "Ensalada de pasta con atún y vegetales",
+  "img": "https://img-global.cpcdn.com/002_recipes/25de58fa49af12fa/664x470cq70/photo.jpg",
+  ingredients: [{
+    "name": "pasta",
+    "quantity": ".2"
+  }, {
+    "name": "atún",
+    "quantity": "1"
+  }, {
+    "name": "chiles campana",
+    "quantity": ".05"
+  }, {
+    "name": "elote",
+    "quantity": "400"
+  }, {
+    "name": "brocoli",
+    "quantity": ".4"
+  }, {
+    "name": "cebolla morada",
+    "quantity": ".2"
+  }]
+};
+
 var Manager = _react2.default.createClass({
   displayName: 'Manager',
 
-  getInitialState: function getInitialState() {
-    return {
-      ingredients: ingredients,
-      index: 0
-    };
-  },
+  /*default Handlers*/
   clickHandlers: function clickHandlers(config) {
     var index = this.state.index,
         element = config.name,
@@ -205,6 +186,49 @@ var Manager = _react2.default.createClass({
     ingredients[selectedIndex].status = 'active';
 
     this.setState({ ingredients: ingredients, index: selectedIndex });
+  },
+  removeIngredients: function removeIngredients() {
+    var obj = arguments.length <= 0 || arguments[0] === undefined ? { name: '' } : arguments[0];
+
+    recipe.ingredients = recipe.ingredients.filter(function (element) {
+      return element.name != obj.name;
+    });
+    console.log(recipe.ingredients);
+  },
+  /*content Generators*/
+  returnIngredients: function returnIngredients() {
+    var item = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+
+    var items = [];
+
+    for (var i = ingredientList.length - 1; i >= 0; i -= 1) {
+      if (ingredientList[i].name === item) {
+        items = ingredientList[i].list;
+        break;
+      }
+    }
+
+    return _react2.default.createElement(
+      'ul',
+      { className: 'list-unstyled' },
+      items.map(function (item, index) {
+        return _react2.default.createElement(
+          'li',
+          { className: 'label label-primary', key: index },
+          item,
+          ' ',
+          _react2.default.createElement('span', { className: 'glyphicon glyphicon-plus', 'aria-hidden': 'true' })
+        );
+      })
+    );
+  },
+  /*Lyfe Cycle*/
+  getInitialState: function getInitialState() {
+    return {
+      ingredients: ingredients,
+      recipe: recipe,
+      index: 0
+    };
   },
   render: function render() {
     var self = this,
@@ -232,15 +256,87 @@ var Manager = _react2.default.createClass({
           { className: 'row' },
           _react2.default.createElement(
             'div',
-            { className: 'col-xs-2 col-xs-offset-1' },
+            { className: 'col-xs-10 col-xs-offset-1 ingredients-container' },
             function () {
               var item = self.state.index;
 
               if (ingredients[item].name === "agregar") {
                 return "agregar";
               } else {
-                return "no agregar";
+                return self.returnIngredients(ingredients[item].name);
               }
+            }()
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'container-fluid' },
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-xs-12' },
+            function () {
+              var recipe = self.state.recipe;
+              return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  'h1',
+                  null,
+                  recipe.name
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'container-fluid' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'col-xs-12 col-md-5' },
+                      _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Presentación'
+                      ),
+                      _react2.default.createElement('img', { src: recipe.img, alt: recipe.name, className: 'img-responsive' })
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'col-xs-12 col-md-7' },
+                      _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Ingredientes'
+                      ),
+                      _react2.default.createElement(
+                        'ul',
+                        { className: 'ingredient-list' },
+                        recipe.ingredients.map(function (item, index) {
+                          return _react2.default.createElement(
+                            'li',
+                            { key: index },
+                            _react2.default.createElement(
+                              'label',
+                              null,
+                              item.name
+                            ),
+                            _react2.default.createElement('input', { type: 'text', value: item.quantity }),
+                            _react2.default.createElement(
+                              'span',
+                              { className: 'label label-danger', onClick: self.removeIngredients.bind(null, { name: item.name }) },
+                              'Rermover'
+                            )
+                          );
+                        })
+                      )
+                    )
+                  )
+                )
+              );
             }()
           )
         )
